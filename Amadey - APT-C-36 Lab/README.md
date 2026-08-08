@@ -1,10 +1,10 @@
 # Amadey - APT-C-36 Lab
 
 ## Executive Summary
-
-## Incident Overview
+EDR triggered due to the detection of an Amadey Trojan stealer, the exact initial access is unable to be determined from the evidence collected from the memory dump. However, after the malware had been downloaded lssass.exe was executed in the users Temp directory and in the Scheduled tasks directory. lssass.exe also established connection to the C2 server 41.75.84.12 on port 80 where cred64.dll and clip64.dll were downloaded. Then lssass.exe spawned rundll32.exe to execute clip64.dll from the AppData\Roaming directory.
 
 ## Initial Access
+Unknown - Unable to determine from the evidence found
 
 ## Attack Chain
 
