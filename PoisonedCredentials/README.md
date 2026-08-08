@@ -35,6 +35,12 @@ This alert was triggered due to suspicious network activity involving the abuse 
 | SMB2 authentication packets | Reveal the compromised user account **janesmith**. |
 | SMB2 traffic | Identifies the compromised workstation as **AccountingPC**. |
 
+## MITRE ATT&CK Mapping
+| Technique | ID | Description |
+|-----------|------------|--------------------------------------------------------------|
+| LLMNR/NBT-NS Poisoning and SMB Relay | T1557.001 | The attacker responded to LLMNR/NBT-NS name resolution requests to impersonate a legitimate host and capture NTLM authentication attempts. |
+| Forced Authentication | T1187 | The victim was induced to authenticate to the attacker's rogue SMB server after the poisoned LLMNR response. |
+
 ## Detection Opportunities
 | Detection | Purpose |
 |-----------|---------|
