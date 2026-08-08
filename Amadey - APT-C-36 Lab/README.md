@@ -4,7 +4,7 @@
 > **Achievement:** https://cyberdefenders.org/blueteam-ctf-challenges/achievements/BigPuffer/amadey-apt-c-36/
 
 ## Executive Summary
-EDR triggered due to the detection of an Amadey Trojan stealer, the exact initial access is unable to be determined from the evidence collected from the memory dump. However, after the malware had been downloaded lssass.exe was executed in the users Temp directory and in the Scheduled tasks directory. lssass.exe also established connection to the C2 server 41.75.84.12 on port 80 where cred64.dll and clip64.dll were downloaded. Then lssass.exe spawned rundll32.exe to execute clip64.dll from the AppData\Roaming directory.
+An EDR alert was triggered due to the detection of the Amadey Trojan Stealer. The exact initial access could not be determined from the available memory image. However, lssass.exe was executed from the user's Temp directory and established persistence by creating a copy in the Scheduled Tasks directory. The malware then communicated with the C2 server 41.75.84.12 over HTTP (TCP/80), where it downloaded the payloads cred64.dll and clip64.dll. Finally, lssass.exe spawned rundll32.exe to execute clip64.dll from the user's AppData\Roaming directory.
 
 ## Initial Access
 | Stage | Activity |
