@@ -4,20 +4,14 @@
 EDR triggered due to the detection of an Amadey Trojan stealer, the exact initial access is unable to be determined from the evidence collected from the memory dump. However, after the malware had been downloaded lssass.exe was executed in the users Temp directory and in the Scheduled tasks directory. lssass.exe also established connection to the C2 server 41.75.84.12 on port 80 where cred64.dll and clip64.dll were downloaded. Then lssass.exe spawned rundll32.exe to execute clip64.dll from the AppData\Roaming directory.
 
 ## Initial Access
-Unknown - Unable to determine from the evidence found
-
-## Attack Chain
-Unknown Initial Access
-        ↓
-Amadey Execution
-        ↓
-Persistence
-        ↓
-Command and Control
-        ↓
-Payload Download
-        ↓
-Payload Execution
+| Stage | Activity |
+|------|----------|
+| 1 | Unknown Initial Access |
+| 2 | Amadey Execution |
+| 3 | Persistence |
+| 4 | Command and Control |
+| 5 | Payload Download |
+| 6 | Payload Execution |
 
 ## Timeline
 1. Initial access could not be determined from the available memory image.
