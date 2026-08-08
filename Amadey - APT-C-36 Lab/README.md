@@ -63,3 +63,9 @@ This can also be detected through network indicators such as C2 Traffic and payl
 
 ## Lessons Learned
 This investigation demonstrates the importance of monitoring execution from user-writable directories and identifying the abuse of legitimate Windows utilities such as `rundll32.exe`. Combining endpoint telemetry with network indicators enables investigators to reconstruct malware execution, persistence and command-and-control activity, even when the initial access vector cannot be determined.
+
+## Tools Used
+- Volatility 3
+- MemProcFS
+- PEStudio
+- VirusTotal
