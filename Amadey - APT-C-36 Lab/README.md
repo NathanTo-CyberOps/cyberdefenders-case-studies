@@ -7,7 +7,17 @@ EDR triggered due to the detection of an Amadey Trojan stealer, the exact initia
 Unknown - Unable to determine from the evidence found
 
 ## Attack Chain
-Initial Access Unknown -> Malware execution -> Payload download -> Payload execution
+Unknown Initial Access
+        ↓
+Amadey Execution
+        ↓
+Persistence
+        ↓
+Command and Control
+        ↓
+Payload Download
+        ↓
+Payload Execution
 
 ## Timeline
 1. Initial access could not be determined from the available memory image.
@@ -23,17 +33,27 @@ Initial Access Unknown -> Malware execution -> Payload download -> Payload execu
 6. lssass.exe spawned rundll32.exe to execute clip64.dll from the user's AppData\Roaming directory.
 
 ## Key Evidence
-lssass.exe
-41.75.84.12/:80
-cred64.dll 
-clip64.dll
+| Evidence | Significance |
+|----------|--------------|
+| lssass.exe | Primary malicious executable |
+| 41.75.84.12 | Command-and-control server |
+| TCP/80 | HTTP communication used for payload delivery |
+| cred64.dll | Downloaded payload |
+| clip64.dll | Downloaded payload executed through rundll32.exe |
+| rundll32.exe | LOLBin used to execute malicious DLL |
 
 ## MITRE ATT&CK Mapping
-Command and Control (T1071.001): Uses application layer protocols like HTTP for C2 communications.
-Persistence & Defense Evasion (T1547.001, T1112): Modifies and overwrites registry run keys and startup folder items.
-Discovery (T1082, T1083, T1518.001): Performs system information gathering, file/directory discovery, and security software/antivirus discovery.
-Execution & Ingress Tool Transfer (T1106, T1105): Leverages native Windows APIs and downloads/executes additional files or malicious payloads.
-Obfuscation (T1027, T1140): Obfuscates and decodes strings such as domains and security vendor names.Localization Control (T1614): Checks victim system settings and halts execution if the machine is located in Russia.
+| Technique | ID | Description |
+|----------|------------|------------------------------------------------------------|
+| Ingress Tool Transfer | T1105 | The malware downloads additional payloads (`cred64.dll` and `clip64.dll`) from the C2 server. |
+| Application Layer Protocol: Web Protocols | T1071.001 | The malware communicates with the C2 server over HTTP (TCP/80). |
+| Registry Run Keys / Startup Folder | T1547.001 | Amadey is capable of establishing persistence through Registry Run keys and Startup folders. |
+| System Information Discovery | T1082 | The malware gathers information about the victim system. |
+| File and Directory Discovery | T1083 | The malware enumerates files and directories on the compromised host. |
+| Security Software Discovery | T1518.001 | The malware checks for installed security software and antivirus products. |
+| Obfuscated Files or Information | T1027 | The malware obfuscates strings and other data to hinder analysis. |
+| Deobfuscate/Decode Files or Information | T1140 | The malware decodes or decrypts embedded strings during execution. |
+| System Language Discovery | T1614 | The malware checks the victim's system location and terminates if the host is located in Russia. |
 
 ## Detection Opportunities
 The Amadey Malware could be detected on suspicious execution paths e.g. Temp directory. This can also be detected from persistence mechanisms like modifying the scheduled tasks.
@@ -41,6 +61,11 @@ The Amadey Malware could be detected on suspicious execution paths e.g. Temp dir
 This can also be detected through network indicators such as C2 Traffic and payload downloads
 
 ## Recommendations
+- Block known malicious IP addresses and domains.
+- Restrict execution from user-writable directories such as Temp and AppData where possible.
+- Monitor and alert on suspicious Scheduled Task creation.
+- Deploy endpoint detection capable of identifying LOLBin abuse, including `rundll32.exe`.
+- Maintain up-to-date threat intelligence to detect known Amadey infrastructure.
 
 ## Lessons Learned
-Detections on execution in suspicious file path, Bad IP can prevent the malicious payload from being downloaded
+This investigation demonstrates the importance of monitoring execution from user-writable directories and identifying the abuse of legitimate Windows utilities such as `rundll32.exe`. Combining endpoint telemetry with network indicators enables investigators to reconstruct malware execution, persistence and command-and-control activity, even when the initial access vector cannot be determined.
