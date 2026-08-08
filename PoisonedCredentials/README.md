@@ -5,7 +5,7 @@
 > **Achievement:** https://cyberdefenders.org/blueteam-ctf-challenges/achievements/BigPuffer/poisonedcredentials/
 
 ## Executive Summary
-This investigation examines an incident involving poisoned credentials, where an attacker exploited vulnerabilities in the LLMNR and NBT-NS protocols to impersonate a legitimate host and capture authentication attempts. Using Wireshark, malicious LLMNR traffic was analysed to identify the rogue system responsible for responding to name resolution requests. Further analysis identified the compromised host and user account that communicated with the attacker. The investigation reconstructs the attack and highlights how insecure name resolution protocols can be abused to obtain user credentials.
+This alert was triggered due to suspicious network activity involving the abuse of the LLMNR and NBT-NS protocols. When a user mistypes a hostname, an LLMNR broadcast is sent across the network to resolve the unknown name. An attacker can respond before the legitimate host, causing the victim to connect to a rogue SMB server. Once the victim attempts NTLM authentication, the attacker can capture the NTLM challenge-response for potential credential compromise.
 
 ## Initial Access
 | Stage | Activity |
@@ -18,21 +18,31 @@ This investigation examines an incident involving poisoned credentials, where an
 | 6 | Credentials captured |
 
 ## Timeline
-This investigation examines a surge in suspicious network activity within an organisation where the attacker's actions were first noticed after a user mistyped the query "fileshaare" from the machine with the IP address "192.168.232.162". Analysis of the LLMNR traffic showed that the rogue system responding to the request had the IP address 192.168.232.215, identifying it as the attacker's machine. We then attempted to identify a second affected host by applying the filter "nbns.addr == 192.168.232.215", which revealed the IP address "192.168.232.176". To identify the compromised account, SMB2 packets destined for "192.168.232.176" were analysed, revealing the username "janesmith". Finally, to determine which host the attacker accessed over SMB, the filter "ip.dst == 192.168.232.215" and smb2 was applied, identifying the hostname AccountingPC.
+| Step | Event |
+|------|-------|
+| 1 | A user on **192.168.232.162** mistyped the hostname **"fileshaare"**, triggering an LLMNR broadcast. |
+| 2 | Analysis of the LLMNR traffic identified **192.168.232.215** as the rogue host responding to the broadcast. |
+| 3 | The filter `nbns.addr == 192.168.232.215` identified **192.168.232.176** as the second affected host communicating with the attacker. |
+| 4 | SMB2 authentication traffic destined for **192.168.232.176** revealed the compromised user account **janesmith**. |
+| 5 | SMB2 traffic destined for **192.168.232.215** identified the compromised workstation hostname as **AccountingPC**. |
 
 ## Key Evidence
-- LLMNR query for the non-existent hostname "fileshaare".
-- LLMNR response originating from 192.168.232.215.
-- NBNS traffic identifying the affected host at 192.168.232.176.
-- SMB2 authentication packets revealing the username janesmith.
-- SMB2 traffic identifying the hostname AccountingPC.
+| Evidence | Significance |
+|----------|--------------|
+| LLMNR query for the hostname **"fileshaare"** | Indicates the initial failed hostname lookup that triggered the attack. |
+| LLMNR response from **192.168.232.215** | Identifies the rogue system responding to the broadcast request. |
+| NBNS traffic identifying **192.168.232.176** | Identifies the affected host communicating with the attacker. |
+| SMB2 authentication packets | Reveal the compromised user account **janesmith**. |
+| SMB2 traffic | Identifies the compromised workstation as **AccountingPC**. |
 
 ## Detection Opportunities
-- Monitor LLMNR and NBT-NS traffic within enterprise networks.
-- Alert on LLMNR responses from non-authorised hosts.
-- Detect repeated name resolution failures.
-- Disable LLMNR and NBT-NS where possible.
-- Alert on SMB authentication to unexpected hosts.
+| Detection | Purpose |
+|-----------|---------|
+| Monitor LLMNR and NBT-NS traffic within the network. | Detect unusual name resolution activity. |
+| Alert on LLMNR responses from non-authorised hosts. | Identify potential rogue responders performing name resolution poisoning. |
+| Detect repeated failed hostname resolution requests. | Identify systems vulnerable to LLMNR/NBT-NS poisoning attacks. |
+| Alert on SMB authentication to unexpected hosts. | Detect victims attempting to authenticate to rogue SMB servers. |
+| Disable LLMNR and NBT-NS where operationally possible. | Prevent attackers from abusing legacy name resolution protocols. |
 
 ## Recommendations
 - Disable LLMNR where operationally possible.
@@ -44,3 +54,13 @@ This investigation examines a surge in suspicious network activity within an org
 
 ## Lessons Learned
 This investigation demonstrated how legacy name resolution protocols can be abused to capture user credentials without exploiting software vulnerabilities. It also highlighted the importance of analysing network traffic chronologically to reconstruct attacker activity and identify compromised hosts.
+
+## Tools Used
+- Wireshark
+- Volatility 3
+- MemProcFS
+- PEStudio
+- VirusTotal
+- CyberChef
+- Chainsaw
+- Sigma CLI
