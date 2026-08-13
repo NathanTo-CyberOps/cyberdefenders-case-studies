@@ -20,11 +20,13 @@ Password Spray from 52.59.240.166
 
 2. Compromised mharmon@compliantsecure.store account
 
-3. Privilege escalation, the attacker escalated lwilliams@compliantsecure.store to a Global Administrator role
+3. The attacker maintained persistence by creating 'OfficeRead' & 'VaultApp'
 
-3. Command and Control contact, the attacker connected to a C2 IP based in Singapore
+4. Privilege escalation, the attacker escalated lwilliams@compliantsecure.store to a Global Administrator role
 
-4. The attacker accessed the storage account mainstoragestore01 and exfiltrated Confidintal.png
+5. Command and Control contact, the attacker connected to a C2 IP `52.221.180.165` based in Singapore
+
+6. The attacker accessed the storage account mainstoragestore01 and exfiltrated Confidintal.png
 
 
 ## Key Evidence
