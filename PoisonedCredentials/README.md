@@ -8,14 +8,8 @@
 This alert was triggered due to suspicious network activity involving the abuse of the LLMNR and NBT-NS protocols. When a user mistypes a hostname, an LLMNR broadcast is sent across the network to resolve the unknown name. An attacker can respond before the legitimate host, causing the victim to connect to a rogue SMB server. Once the victim attempts NTLM authentication, the attacker can capture the NTLM challenge-response for potential credential compromise.
 
 ## Initial Access
-| Stage | Activity |
-|------|----------|
-| 1 | Victim mistypes hostname |
-| 2 | LLMNR broadcast |
-| 3 | Attacker responds |
-| 4 | Victim connects to rogue SMB server |
-| 5 | NTLM authentication attempted |
-| 6 | Credentials captured |
+The Victim mistypes hostname which causes a LLMNR broadcast which the Attacker responds to.
+
 
 ## Timeline
 | Step | Event |
