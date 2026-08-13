@@ -32,6 +32,14 @@ Password Spray from 52.59.240.166
 ## Key Evidence
 | Evidence | Significance |
 |----------|--------------|
+| 52.59.240.166 | Initial Access Password spray IP |
+| mharmon@compliantsecure.store | Initial Access first account compromised |
+| 52.221.180.165 | C2C IP in Singapore |
+| lwilliams@compliantsecure.store | Account escalated to Global Administrator |
+| OfficeRead | Persistence App |
+| VaultApp | Persistence App |
+| mainstoragestore01 | storage account accessed |
+| Confidential.png | Data exfiltrated |
 
 ## MITRE ATT&CK Mapping
 | Technique | ID | Description |
