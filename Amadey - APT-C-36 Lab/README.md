@@ -7,14 +7,7 @@
 An EDR alert was triggered due to the detection of the Amadey Trojan Stealer. The exact initial access could not be determined from the available memory image. However, lssass.exe was executed from the user's Temp directory and established persistence by creating a copy in the Scheduled Tasks directory. The malware then communicated with the C2 server 41.75.84.12 over HTTP (TCP/80), where it downloaded the payloads cred64.dll and clip64.dll. Finally, lssass.exe spawned rundll32.exe to execute clip64.dll from the user's AppData\Roaming directory.
 
 ## Initial Access
-| Stage | Activity |
-|------|----------|
-| 1 | Unknown Initial Access |
-| 2 | Amadey Execution |
-| 3 | Persistence |
-| 4 | Command and Control |
-| 5 | Payload Download |
-| 6 | Payload Execution |
+The initial access vector could not be determined from the available memory image.
 
 ## Timeline
 1. Initial access could not be determined from the available memory image.
