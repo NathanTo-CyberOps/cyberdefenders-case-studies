@@ -13,8 +13,7 @@ The attacker maintained persistence by creating two applications, `OfficeRead` a
 
 
 ## Initial Access
-| Stage | Activity |
-|------|----------|
+Password Spray from 52.59.240.166
 
 
 
