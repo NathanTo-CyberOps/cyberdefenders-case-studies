@@ -3,6 +3,7 @@
 > **Platform:** CyberDefenders
 > **Challenge:** PoisonedCredentials  
 > **Achievement:** https://cyberdefenders.org/blueteam-ctf-challenges/achievements/BigPuffer/poisonedcredentials/
+> **Write up completed:** 16/07/2026
 
 ## Executive Summary
 This alert was triggered due to suspicious network activity involving the abuse of the LLMNR and NBT-NS protocols. When a user mistypes a hostname, an LLMNR broadcast is sent across the network to resolve the unknown name. An attacker can respond before the legitimate host, causing the victim to connect to a rogue SMB server. Once the victim attempts NTLM authentication, the attacker can capture the NTLM challenge-response for potential credential compromise.
