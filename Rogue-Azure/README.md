@@ -66,7 +66,9 @@ Password Spray from 52.59.240.166
 - Enable MFA
 
 ## Lessons Learned
-
+- This investigation demonstrates the importance of enabling MFA and being proactive on threat intelligence to block known bad IPs. 
 
 ## Tools Used
+- Microsoft Sentinel
+- KQL
 
