@@ -62,7 +62,8 @@ Password Spray from 52.59.240.166
 | Monitor users accessing storage accounts | Detects if the correct user is accessing the storage |
 
 ## Recommendations
-
+- Block logins from C2 IPs
+- Enable MFA
 
 ## Lessons Learned
 
