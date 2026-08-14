@@ -16,7 +16,7 @@
 
 ## Timeline
 | Step | Event |
-|-----:|-------|
+|------|-------|
 |      |       |
 
 ## Key Evidence
