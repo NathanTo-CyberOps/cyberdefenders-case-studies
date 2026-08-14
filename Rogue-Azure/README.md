@@ -2,7 +2,7 @@
 > **Platform:** CyberDefenders
 > **Challenge:** Rogue Azure Lab  
 > **Achievement:** https://cyberdefenders.org/blueteam-ctf-challenges/achievements/BigPuffer/rogue-azure/
-> **Write up completed:** 14/08/2026
+> **Writeup completed:** 14/08/2026
 
 ## Executive Summary
 On November 14, 2025, security monitoring detected suspicious authentication activity within the Azure tenant, with sign-in attempts coming from multiple geographic locations. Using Microsoft Sentinel, we identified the source of a password spray attack as `52.59.240.166`, which successfully gained access to the `mharmon@compliantsecure.store` account.
