@@ -57,13 +57,19 @@ Password Spray from 52.59.240.166
 |-----------|---------|
 | Monitor for failed logins from a single IP in a 15 minute period | Detects password spray |
 | Monitor Network connections to C2 IPs | Detects C2 communication |
-| Monitor job for App creation | Detects unusual users creating accounts |
+| Monitor for unusual application registrations and service principal creation | Detects potentially malicious application integrations |
 | Monitor Privilege escalation | Detects unauthorised privilege escalation |
-| Monitor users accessing storage accounts | Detects if the correct user is accessing the storage |
+| Monitor users accessing storage accounts | Monitor for unusual storage access or downloads from users/IP addresses that don't normally access the resource |
 
 ## Recommendations
-- Block logins from C2 IPs
-- Enable MFA
+- Require MFA, particularly for privileged accounts.
+- Apply Conditional Access policies to restrict suspicious or anomalous authentication.
+- Restrict which users can register applications and grant application consent.
+- Review existing application registrations, service principals and OAuth permissions.
+- Monitor and alert on Global Administrator role assignments.
+- Use least privilege and just-in-time privileged access where possible.
+- Monitor anomalous access to sensitive Azure Storage resources.
+- Revoke compromised sessions/tokens and rotate affected credentials following compromise.
 
 ## Lessons Learned
 - This investigation demonstrates the importance of enabling MFA and being proactive on threat intelligence to block known bad IPs. 
