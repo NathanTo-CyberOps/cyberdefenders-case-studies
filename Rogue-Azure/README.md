@@ -53,7 +53,13 @@ Password Spray from 52.59.240.166
 
 
 ## Detection Opportunities
-
+| Detection | Purpose |
+|-----------|---------|
+| Monitor for failed logins from a single IP in a 15 minute period | Detects password spray |
+| Monitor Network connections to C2 IPs | Detects C2 communication |
+| Monitor job for App creation | Detects unusual users creating accounts |
+| Monitor Privilege escalation | Detects unauthorised privilege escalation |
+| Monitor users accessing storage accounts | Detects if the correct user is accessing the storage |
 
 ## Recommendations
 
