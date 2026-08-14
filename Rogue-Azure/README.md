@@ -44,6 +44,12 @@ Password Spray from 52.59.240.166
 ## MITRE ATT&CK Mapping
 | Technique | ID | Description |
 |----------|------------|------------------------------------------------------------|
+| Brute Force / Password Spray | T1110.003 | Password Spray from 52.59.240.166 which resulted in initial access |
+| Access to valid domain account | T1078.002 | Password spray resulted in access to mharmon@compliantsecure.store |
+| Privilege escalation / Valid Accounts: Domain accounts| T1078.002 | lwilliams@compliantsecure.store Account escalated to Global Administrator | 
+| Cloud application integration | T1671 | OfficeRead & VaultApp created |
+| Data from Cloud Storage | T1530 | mainstoragestore01 account accessed |
+| Exfiltration Over C2 Channel | T1041 | Confidential.png exfiltrated over 52.221.180.165 | 
 
 
 ## Detection Opportunities
