@@ -6,13 +6,10 @@ A portfolio of CyberDefenders DFIR investigations documenting attack chains, dig
 
 ## Case Studies
 
-| Case                | Category           | Primary Attack Phase                     | Status         |
-| ------------------- | ------------------ | ---------------------------------------- | -------------- |
-| [PoisonedCredentials](PoisonedCredentials/) | Network Forensics | Credential Access | ✅ Completed |
-| [Amadey - APT-C-36](Amadey%20-%20APT-C-36%20Lab/) | Endpoint Forensics | Execution / Persistence | ✅ Completed   |
-| [Rogue Azure](./Rogue-Azure/README.md) | Cloud Forensics | Initial Access (Credential Abuse) | ✅ Completed   |
-| [KioskExpo7 Lab](./KioskExpo7%Lab/README.md) | Network Forensics | Initial Access (Exposed Service) | ✅ Completed   |
-| JetBrains           | Network Forensics  | TBC                                      | 🚧 Coming Soon |
-| RetailBreach        | Network Forensics  | TBC                                      | 🚧 Coming Soon |
-| AWSRaid             | Cloud Forensics    | TBC                                      | 🚧 Coming Soon |
+| Case | Difficulty | Category | Primary Attack Phase | Status |
+| ---- | ---------- | -------- | -------------------- | ------ |
+| [PoisonedCredentials](PoisonedCredentials/) | Easy | Network Forensics | Credential Access | ✅ Completed |
+| [Amadey - APT-C-36](Amadey%20-%20APT-C-36%20Lab/) | Easy | Endpoint Forensics | Execution / Persistence | ✅ Completed |
+| [Rogue Azure](./Rogue-Azure/README.md) | Easy | Cloud Forensics | Initial Access (Credential Abuse) | ✅ Completed |
+| [KioskExpo7 Lab](./KioskExpo7%20Lab/README.md) | Easy | Network Forensics | Initial Access (Exposed Service) | 🚧 Coming Soon |
 
