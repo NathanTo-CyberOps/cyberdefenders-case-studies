@@ -1,8 +1,8 @@
-# WebStrike
+# KioskExpo7 Lab
 
 > **Platform:** CyberDefenders  
-> **Challenge:** WebStrike  
-> **Achievement:** https://cyberdefenders.org/blueteam-ctf-challenges/achievements/BigPuffer/webstrike/
+> **Challenge:** KioskExpo7 Lab 
+> **Achievement:** 
 > **Writeup Completed:**
 
 ## Executive Summary
