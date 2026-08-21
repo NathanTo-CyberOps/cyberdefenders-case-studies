@@ -2,8 +2,8 @@
 
 > **Platform:** CyberDefenders  
 > **Challenge:** KioskExpo7 Lab 
-> **Achievement:** 
-> **Writeup Completed:**
+> **Achievement:** https://cyberdefenders.org/blueteam-ctf-challenges/achievements/BigPuffer/kioskexpo7/
+> **Writeup Completed:** 
 
 ## Executive Summary
 
