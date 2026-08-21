@@ -8,6 +8,7 @@
 ## Executive Summary
 
 ## Initial Access
+Kiosk Escape - This involves abusing browser shortcuts (such as Ctrl+O, Ctrl+S, or Ctrl+P) to invoke File Explorer, then clicking the Help button to spawn an unrestricted browser instance.
 
 ## Attack Chain
 | Stage | Activity |
