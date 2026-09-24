@@ -25,9 +25,17 @@ Kiosk Escape - This involves abusing browser shortcuts (such as Ctrl+O, Ctrl+S, 
 | Anti-Forensics | The attacker attempts to overwrite the `KioskAdmin` PowerShell history and deletes the disguised `cmd.exe` / `msedge.exe`, which is moved to the Recycle Bin as `$R0BD893.exe`. |
 
 ## Key Evidence
-| Evidence | Significance |
-|----------|--------------|
-|          |              |
+
+| Artifact | Information Found |
+|---|---|
+| Edge History | Showed the kiosk breakout activity, browsing to local `file:///` paths, and the download of `cmd.exe`. |
+| USN Journal / `$MFT` | Showed `cmd.exe` being renamed to `msedge.exe`, the malicious QR file being renamed and placed on the Desktop, and the deleted executable appearing in the Recycle Bin. |
+| PowerShell History | Showed the download and execution of the enumeration script and the command `runas /user:KioskAdmin powershell`. |
+| Registry | Showed the kiosk `RestrictRun` configuration, the stored `KioskAdmin` credentials, and `EnableLUA` being set to `0`. |
+| Prefetch | Confirmed execution of `msedge.exe`, PowerShell, and other utilities used during the attack. |
+| Security Event Log | Confirmed the use of explicit credentials for the `KioskAdmin` account. |
+| PowerShell Operational Log | Showed the commands used to create the `KioskStatusCheck` and `KioskUpdate` scheduled tasks. |
+| MFT Resident Data | Allowed recovery of `alive.ps1` and `update.ps1`, revealing their beaconing and C2 functionality. |
 
 
 ## MITRE ATT&CK Mapping
