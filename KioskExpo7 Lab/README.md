@@ -11,11 +11,6 @@ On October 18, 2025, we understand from staff that laptops were being used as ki
 ## Initial Access
 Kiosk Escape - This involves abusing browser shortcuts (such as Ctrl+O, Ctrl+S, or Ctrl+P) to invoke File Explorer, then clicking the Help button to spawn an unrestricted browser instance.
 
-## Attack Chain
-| Stage | Activity |
-|-------|----------|
-|       |          |
-
 ## Attack Timeline
 
 | Stage | Event |
