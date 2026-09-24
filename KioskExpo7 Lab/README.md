@@ -39,9 +39,20 @@ Kiosk Escape - This involves abusing browser shortcuts (such as Ctrl+O, Ctrl+S, 
 
 
 ## MITRE ATT&CK Mapping
+
 | Technique | ID | Description |
-|-----------|----|-------------|
-|           |    |             |
+|---|---|---|
+| Masquerading: Rename Legitimate Utilities | T1036.003 | The attacker renamed `cmd.exe` to `msedge.exe` to bypass the kiosk's filename-based application restriction. |
+| Command and Scripting Interpreter: Windows Command Shell | T1059.003 | The attacker executed the renamed `cmd.exe` to gain command-line access to the kiosk. |
+| Command and Scripting Interpreter: PowerShell | T1059.001 | PowerShell was used for enumeration, privilege escalation activity, persistence scripts and C2 functionality. |
+| Ingress Tool Transfer | T1105 | The attacker downloaded tools and payloads onto the system, including `lightpeas.bat` and additional files used during the compromise. |
+| Unsecured Credentials: Credentials in Registry | T1552.002 | The attacker discovered the `KioskAdmin` credentials stored insecurely in the Windows Registry. |
+| Valid Accounts: Local Accounts | T1078.003 | The attacker used the legitimate local `KioskAdmin` account to obtain higher privileges. |
+| Modify Registry | T1112 | The attacker modified the `EnableLUA` registry value to disable UAC. |
+| Scheduled Task/Job: Scheduled Task | T1053.005 | The attacker created the `KioskStatusCheck` and `KioskUpdate` scheduled tasks to execute malicious PowerShell scripts and maintain persistence. |
+| Application Layer Protocol: Web Protocols | T1071.001 | The persistence scripts communicated with attacker-controlled infrastructure using web protocols for beaconing and C2 activity. |
+| Indicator Removal: Clear Command History | T1070.003 | The attacker overwrote the `KioskAdmin` PowerShell command history to remove evidence of executed commands. |
+| Indicator Removal: File Deletion | T1070.004 | The attacker deleted tools used during the compromise, including the enumeration script and disguised `cmd.exe`. |
 
 ## Detection Opportunities
 | Detection | Purpose |
