@@ -12,4 +12,5 @@ A portfolio of CyberDefenders DFIR investigations documenting attack chains, dig
 | [Amadey - APT-C-36](Amadey%20-%20APT-C-36%20Lab/) | Easy | Endpoint Forensics | Execution / Persistence | ✅ Completed |
 | [Rogue Azure](./Rogue-Azure/README.md) | Easy | Cloud Forensics | Initial Access (Credential Abuse) | ✅ Completed |
 | [KioskExpo7 Lab](./KioskExpo7%20Lab/README.md) | Medium | Endpoint Forensics | Kiosk Escape | ✅ Completed |
+| [CodeFreeze Lab](./CodeFreeze%20Lab/README.md) | Medium | Endpoint Forensics | TBC | 🚧 In Progress |
 
