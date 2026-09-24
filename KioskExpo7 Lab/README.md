@@ -60,14 +60,13 @@ Kiosk Escape - This involves abusing browser shortcuts (such as Ctrl+O, Ctrl+S, 
 | Detect unusual file creation, rename, or deletion activity | Changes to files used by the kiosk, such as the QR code or files within protected application directories, could indicate tampering. |
 | Detect connections to known malicious or unusual external infrastructure | Kiosk systems should have a limited set of expected network destinations. Connections to known malicious IP addresses, rare domains, or unexpected external services could indicate C2 activity. |
 
-## Recommendations
+## Recommendations and Lessons Learned
 - Harden kiosk mode so that File Explorer dialogs cannot be abused to escape the restricted environment.
 - Use application control based on file hashes, signatures, or trusted publishers rather than filename alone.
 - Remove plaintext administrator credentials from the registry.
 - Restrict outbound network connections to approved destinations only.
 - Prevent the kiosk account from accessing PowerShell, Command Prompt, and other command interpreters.
 - Protect kiosk content such as `qr-code.png` from unauthorised modification using appropriate file permissions, integrity controls, or read-only deployment mechanisms.
-
-## Lessons Learned
+- Treat public-facing kiosk systems as high-risk assets and monitor them for activity that falls outside their expected behaviour.
 
 ## Tools Used
