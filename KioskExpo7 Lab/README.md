@@ -12,7 +12,6 @@ On October 18, 2025, we understand from staff that laptops were being used as ki
 Kiosk Escape - This involves abusing browser shortcuts (such as Ctrl+O, Ctrl+S, or Ctrl+P) to invoke File Explorer, then clicking the Help button to spawn an unrestricted browser instance.
 
 ## Attack Timeline
-
 | Stage | Event |
 |---|---|
 | Initial Access | The attacker physically approaches the kiosk and abuses browser shortcuts to invoke File Explorer. They then click the Help button, which spawns an unrestricted browser instance with a fully functioning address bar. |
@@ -25,7 +24,6 @@ Kiosk Escape - This involves abusing browser shortcuts (such as Ctrl+O, Ctrl+S, 
 | Anti-Forensics | The attacker attempts to overwrite the `KioskAdmin` PowerShell history and deletes the disguised `cmd.exe` / `msedge.exe`, which is moved to the Recycle Bin as `$R0BD893.exe`. |
 
 ## Key Evidence
-
 | Artifact | Information Found |
 |---|---|
 | Edge History | Showed the kiosk breakout activity, browsing to local `file:///` paths, and the download of `cmd.exe`. |
@@ -39,7 +37,6 @@ Kiosk Escape - This involves abusing browser shortcuts (such as Ctrl+O, Ctrl+S, 
 
 
 ## MITRE ATT&CK Mapping
-
 | Technique | ID | Description |
 |---|---|---|
 | Masquerading: Rename Legitimate Utilities | T1036.003 | The attacker renamed `cmd.exe` to `msedge.exe` to bypass the kiosk's filename-based application restriction. |
@@ -55,9 +52,13 @@ Kiosk Escape - This involves abusing browser shortcuts (such as Ctrl+O, Ctrl+S, 
 | Indicator Removal: File Deletion | T1070.004 | The attacker deleted tools used during the compromise, including the enumeration script and disguised `cmd.exe`. |
 
 ## Detection Opportunities
-| Detection | Purpose |
-|-----------|---------|
-|           |         |
+| Detection Opportunity | Purpose |
+|---|---|
+| Detect downloads of executable files or scripts | A kiosk should not normally be downloading tools or executables. Downloads such as `.exe`, `.bat`, or `.ps1` files should be treated as unusual and investigated. |
+| Detect creation or modification of scheduled tasks | Scheduled tasks should rarely change on a kiosk. New or modified tasks could indicate an attempt to establish persistence. |
+| Detect sensitive registry modifications | Monitor for changes to security-related registry values such as `EnableLUA`, application restriction settings, or other configuration areas that should remain static on a kiosk. |
+| Detect unusual file creation, rename, or deletion activity | Changes to files used by the kiosk, such as the QR code or files within protected application directories, could indicate tampering. |
+| Detect connections to known malicious or unusual external infrastructure | Kiosk systems should have a limited set of expected network destinations. Connections to known malicious IP addresses, rare domains, or unexpected external services could indicate C2 activity. |
 
 ## Recommendations
 
