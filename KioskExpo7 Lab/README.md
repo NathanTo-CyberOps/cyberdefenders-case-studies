@@ -18,19 +18,16 @@ Kiosk Escape - This involves abusing browser shortcuts (such as Ctrl+O, Ctrl+S, 
 
 ## Attack Timeline
 
-1. The attacker physically approaches the kiosk and abuses browser shortcuts to invoke File Explorer. They then click the Help button, which spawns an unrestricted browser instance with a fully functioning address bar.
-
-2. The attacker downloads `cmd.exe` and renames the executable to `msedge.exe`, allowing them to bypass the kiosk restriction and launch `msedge.exe` (`cmd.exe`). From there, they launch PowerShell under the `kiosk` user.
-
-3. Inside the PowerShell session running under the `kiosk` user, the attacker runs an enumeration script which obtains the `KioskAdmin` credentials. The attacker then elevates their privileges by running `runas /user:KioskAdmin powershell`, where they manually approve the UAC elevation prompt.
-
-4. The attacker disables UAC by setting `EnableLUA` to `0` in the registry to prevent future UAC prompts.
-
-5. The attacker creates their own QR code to replace the legitimate QR code. The legitimate `qr-code.png` is moved away, and the malicious `qr.png` is renamed to `qr-code.png` and placed on the Desktop.
-
-6. The attacker sets up a scheduled task to function as a beacon and maintain persistence using `alive.ps1`, and another scheduled task to function as a Command & Control script using `update.ps1`. Both scripts are stored in `C:\ProgramData\Maintenance`.
-
-7. The attacker takes anti-forensic actions by attempting to overwrite the `KioskAdmin` PowerShell history and deleting the file downloaded earlier. The deleted disguised `cmd.exe` / `msedge.exe` is moved to the Recycle Bin as `$R0BD893.exe`.
+| Stage | Event |
+|---|---|
+| Initial Access | The attacker physically approaches the kiosk and abuses browser shortcuts to invoke File Explorer. They then click the Help button, which spawns an unrestricted browser instance with a fully functioning address bar. |
+| Execution | The attacker downloads `cmd.exe` and renames the executable to `msedge.exe`, allowing them to bypass the kiosk restriction and launch `msedge.exe` (`cmd.exe`). From there, they launch PowerShell under the `kiosk` user. |
+| Discovery / Privilege Escalation | Inside the PowerShell session running under the `kiosk` user, the attacker runs an enumeration script which obtains the `KioskAdmin` credentials. |
+| Privilege Escalation | The attacker runs `runas /user:KioskAdmin powershell` and manually approves the UAC elevation prompt, giving them elevated administrative access. |
+| Defense Evasion | The attacker disables UAC by setting `EnableLUA` to `0` in the registry to prevent future UAC prompts. |
+| Impact | The attacker replaces the legitimate QR code. The legitimate `qr-code.png` is moved away, while the malicious `qr.png` is renamed to `qr-code.png` and placed on the Desktop. |
+| Persistence / Command & Control | The attacker creates `alive.ps1` and `update.ps1` in `C:\ProgramData\Maintenance` and registers them as scheduled tasks. `alive.ps1` functions as a beacon, while `update.ps1` provides Command & Control functionality. |
+| Anti-Forensics | The attacker attempts to overwrite the `KioskAdmin` PowerShell history and deletes the disguised `cmd.exe` / `msedge.exe`, which is moved to the Recycle Bin as `$R0BD893.exe`. |
 
 ## Key Evidence
 | Evidence | Significance |
