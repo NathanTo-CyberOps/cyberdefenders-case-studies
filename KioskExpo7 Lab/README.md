@@ -70,3 +70,12 @@ Kiosk Escape - This involves abusing browser shortcuts (such as Ctrl+O, Ctrl+S, 
 - Treat public-facing kiosk systems as high-risk assets and monitor them for activity that falls outside their expected behaviour.
 
 ## Tools Used
+- **KAPE** - Used to collect the forensic triage image from the kiosk system.
+- **MFTECmd** - Used to parse the `$MFT` and `$J` (USN Journal), and to recover resident data from MFT records.
+- **Timeline Explorer** - Used to review parsed timeline data from the USN Journal and Prefetch artefacts.
+- **Registry Explorer** - Used to examine registry hives including `NTUSER.DAT` and `SOFTWARE`.
+- **DB Browser for SQLite** - Used to examine the Microsoft Edge `History` database.
+- **PECmd** - Used to parse Windows Prefetch files.
+- **Event Viewer** - Used to examine Windows Security and PowerShell Operational event logs.
+- **CyberChef** - Used to decode the malicious QR code and recover the phishing URL.
+- **Notepad** - Used to inspect recovered PowerShell scripts such as `alive.ps1` and `update.ps1`.
